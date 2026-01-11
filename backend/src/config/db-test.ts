@@ -1,7 +1,7 @@
 import type test from 'node:test';
 import { query } from './db.js';
 
-async function testConnection(){
+async function connectDB(){
     try {
         const result = await query('SELECT NOW()');
         const now = result?.rows?.[0]?.now ?? 'unknown';
@@ -11,4 +11,4 @@ async function testConnection(){
     }
 }
 
-export default testConnection;
+export default connectDB;
