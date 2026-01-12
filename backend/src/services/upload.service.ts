@@ -1,6 +1,7 @@
 import { trace } from "node:console";
 import { parseCSV } from "./csvParser.service.ts";
 import { parsePDF } from "./pdfParser.service.ts";
+import { setTransactions } from "../store/transactions.store.ts";
 
 export const processFile = async (file: Express.Multer.File) => {
     let transactions: any[] = [];
@@ -11,5 +12,6 @@ export const processFile = async (file: Express.Multer.File) => {
         transactions = await parsePDF(unit8array); 
     }
     // Later add the transactions to DB
-    return transactions;
+    setTransactions(transactions)
+    return transactions.length;
 }
