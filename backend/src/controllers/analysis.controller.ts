@@ -16,19 +16,19 @@ export const analyzeTransactions = async (
    if(!transactions || transactions.length === 0){
         return res.status(400).json({error: "No transactions found. Please upload a file first."});
     }
-    // Generating Category wise transaction analysis using AI
-   const categoryWiseTransaction = await generateAITransactions(transactions);
-   console.log("Category wise transaction analysis:", categoryWiseTransaction);
-    // Since we do not have a db, we will be directly using the data from local server.
-    if(!categoryWiseTransaction || categoryWiseTransaction.length === 0){
-        return res.status(400).json({error: "Failed to categorize transactions."});
-    }
-  const summary = calculateSummary(categoryWiseTransaction);
-  console.log("Summary calculated:", summary);
   
-  // console.log(typeof(analysis));
+  const categories = await generateAITransactions(transactions);
+  if(!categories || categories.length === 0){
+    return res.status(400).json({error: "Failed to categorize transactions."});
+  }
+  //Calculate summary based on categorized transactions
+  const summary = calculateSummary(categories);
+  console.log("Summary calculated:", summary);
+
+  // Generate AI insights based on the summary
   console.log("Generating AI insights...");
   const insights = await generateAIInsights(summary);
   console.log("AI Insights Generated:", insights);
-  res.json(summary);
+  res.json({summary, insights});
+  
 };
