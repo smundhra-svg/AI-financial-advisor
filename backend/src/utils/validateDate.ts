@@ -1,5 +1,11 @@
 export const validateDate = (value: string) => {
-    // Regular expression to match the date format DD-MM-YYYY or DD/MM/YYYY
-    return /^\d{2}[\/-]\d{2}([\/-]\d{4})?$/.test(value);
-}
+  if (!value) return false;
 
+  // YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return true;
+
+  // MM/DD or DD/MM
+  if (/^\d{1,2}\/\d{1,2}$/.test(value)) return true;
+
+  return false;
+};

@@ -45,7 +45,7 @@ export const parseCSV = async (buffer: Buffer) => {
 
         results.push({
           txnDate: row.date,
-          narration: row.description?.trim() || null,
+          description: row.description?.trim() || null,
           debit: isNaN(debit) ? null : debit,
           credit: isNaN(credit) ? null : credit,
           balance: isNaN(balance) ? null : balance,

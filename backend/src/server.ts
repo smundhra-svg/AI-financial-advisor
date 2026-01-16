@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from "cors"
 import connectDB from './config/db-test.js';
 import uploadRouter from './routes/upload.routes.ts';
+import aiRouter from './routes/ai.route.ts';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
 app.use(uploadRouter)
+app.use(aiRouter);
 
 app.get('/health',(_,res)=>{
     res.status(200).json({message: 'API is working'});
@@ -19,5 +21,5 @@ app.get('/health',(_,res)=>{
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
-    connectDB();
+    // connectDB();
 });
