@@ -29,6 +29,6 @@ export const analyzeTransactions = async (
   console.log("Generating AI insights...");
   const insights = await generateAIInsights(summary);
   console.log("AI Insights Generated:", insights);
-  res.json({summary, insights});
+  res.json({categories,summary, insights});
   
 };
