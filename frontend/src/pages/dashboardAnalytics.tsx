@@ -23,6 +23,7 @@ import { Button } from "@components/components/ui/button"
 
 export function DashboardData() {
     const {data,loading,error} = useDashboardData();
+    const [showInsights,setShowInsights] = React.useState<Boolean>(false);
     const chartData = React.useMemo(() => {
         if (!data?.categories) return []
 
@@ -83,11 +84,7 @@ export function DashboardData() {
 
     return (
         <>
-            {/* Button to launch our Ai Insights */}
-            <Button>
-                
-            </Button>
-            <div className="w-full h-full dark bg-primary-foreground">
+            <div className="w-full h-full dark bg-primary-foreground ">
                 {/* Total Chart for Income and expense */}
                 <div className="w-full max-w-5xl mx-auto">
                     <Card className="dark py-4 sm:py-0">
@@ -176,10 +173,25 @@ export function DashboardData() {
                 </div>
 
                 {/* Bar Chart for expenses displayed in terms of Categories */}
-                <div className="w-full max-w-3xl my-10 mx-auto">
+                <div className="flex gap-3 p-3">
+                <div className="w-full max-w-3xl mx-auto">
                     <CategoryWiseChart  data={data}/>
                 </div>
 
+                <div className="w-full max-w-3xl mx-auto flex flex-col justify-center absolutea">
+                    <Button
+                        size={"sm"}
+                        onClick={() => setShowInsights(!showInsights)}
+                        className="px-6 w-40 mb-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium align-middle justify-between items-center"
+                    >
+                        {showInsights ? "Hide AI Insights" : "Show AI Insights"}
+                    </Button>
+                
+
+                {/* Conditionally render Insights component */}
+                {showInsights && <Insights data={data} />}
+                </div>
+                </div>
             </div>
         </>
     )
