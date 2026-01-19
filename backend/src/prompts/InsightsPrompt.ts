@@ -17,14 +17,23 @@ STRICT RULES:
 - If data is insufficient for a conclusion, say so clearly.
 - Be practical and realistic for an average salaried individual.
 - Use Indian Currency symbol
+- Do NOT restate amounts with commas unless numerically identical.
+- Do NOT convert values into "lakhs" or "crores".
+- Always reflect the exact numeric value shown in the summary.
 
 OBJECTIVE:
 - Identify spending patterns
 - Highlight savings quality
 - Detect financial risks or inefficiencies
 - Provide actionable improvements
+- Make sure to collect the accurate summary, keeping in mind the decimals.
 
 FINANCIAL SUMMARY:
+IMPORTANT:
+- All monetary values below are in Indian Rupees (₹).
+- Numbers are already final and correctly scaled.
+- DO NOT multiply, divide, round, or re-interpret any value.
+- Use the values exactly as provided.
 ${JSON.stringify(summary, null, 2)}
 
 OUTPUT FORMAT (strictly follow):

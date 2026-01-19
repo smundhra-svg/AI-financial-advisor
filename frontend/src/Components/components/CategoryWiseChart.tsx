@@ -113,9 +113,9 @@ const year = new Date(categories[0].txnDate).getFullYear();
         </div>
       </CardFooter>
     </Card>
-    <div className="text-white">
+    {/* <div className="text-white">
         <Insights data={data}/>
-    </div>
+    </div> */}
     </>
   )
 }

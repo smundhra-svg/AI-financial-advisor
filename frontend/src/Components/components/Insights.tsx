@@ -21,14 +21,14 @@ const Insights = ({ data }: InsightsData) => {
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + insights[index])
         setIndex((prev) => prev + 1)
-      }, 12) // typing speed (adjust if needed)
+      }, 6) // typing speed (adjust if needed)
 
       return () => clearTimeout(timeout)
     }
   }, [index, insights])
 
   return (
-    <Card className="max-w-3xl mx-auto mt-8">
+    <Card className="max-w-3xl mx-auto w-full">
       <CardHeader>
         <CardTitle>AI Financial Insights</CardTitle>
       </CardHeader>

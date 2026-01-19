@@ -47,7 +47,7 @@ export const generateAITransactions = async (transactions: Transaction[]): Promi
             if (!Array.isArray(categories)) {
                 throw new Error(`AI did not return an array`);
             }
-            if (categories.length !== transactions.length) console.log("Lavde pura transaction nahi ha bosdu AI")
+            if (categories.length !== transactions.length) console.log("Length difference alert !")
             const processedTransaction = transactions.map((tx, index) => {
                 
                 return { 
