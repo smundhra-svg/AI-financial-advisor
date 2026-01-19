@@ -1,34 +1,67 @@
+// {
+//   "compilerOptions": {
+//     "target": "ES2020",
+//     "module": "nodenext",
+//     "moduleResolution": "nodenext",
+//     "jsx": "react-jsx", // For React 17 JSX Transform
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "allowImportingTsExtensions": true,
+//     "skipLibCheck": true,
+//     "strict": true, // Optional: Enables strict type checking options
+//     "forceConsistentCasingInFileNames": true,
+//     "outDir": "./src/dist",
+//     "rootDir": "./src",
+//     "resolveJsonModule": true,
+//     "noEmit": true, // Prevents emitting output (since we're not compiling TS to JS here)
+//     "baseUrl": "./src", // Helps with absolute imports
+//     "paths": {
+//       "@components/*": ["Components/*"],
+//       "@hooks/*": ["hooks/*"],
+//       "@utils/*": ["utils/*"],
+//       "@pages/*": ["pages/*"]
+//     },
+//     "lib": ["es2020", "dom"]  
+//   },
+//   "include": [
+//     "src/**/*.tsx",
+//     "src/**/*.ts", "src/Auth/keycloak.js",
+//   ],
+//   "exclude": [
+//     "node_modules",
+//     "build",
+//     "public",
+//     "assets"
+//   ]
+// }
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "jsx": "react-jsx", // For React 17 JSX Transform
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    "jsx": "react-jsx",
+
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "strict": true, // Optional: Enables strict type checking options
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./src/dist",
-    "rootDir": "./src",
-    "resolveJsonModule": true,
-    "noEmit": true, // Prevents emitting output (since we're not compiling TS to JS here)
-    "baseUrl": "./src", // Helps with absolute imports
+
+    "noEmit": true,
+
+    "baseUrl": "./src",
     "paths": {
       "@components/*": ["Components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"]
+      "@pages/*": ["pages/*"],
+      "@assets/*": ["assets/*"],
+       "@hooks/*": ["hooks/*"],
+       "@service/*": ["service/*"]
     },
-    "lib": ["es2020", "dom"]  
+
+    "lib": ["ES2020", "DOM"]
   },
-  "include": [
-    "src/**/*.tsx",
-    "src/**/*.ts", "src/Auth/keycloak.js",
-  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "public",
-    "assets"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

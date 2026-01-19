@@ -18,14 +18,16 @@
 //     };
 // };
 
-export const calculateSummary = (transactions: any[]) => {
+import { ProcessedTransaction } from "../store/transactions.store.ts";
+
+export const calculateSummary = (transactions: ProcessedTransaction[]) => {
   const summary = transactions.reduce((acc, txn) => {
     // 1. Handle Totals
     if (txn.type === "income") {
       acc.totalIncome += txn.amount;
     } else if (txn.type === "expense") {
       acc.totalExpense += txn.amount;
-
+      if(!txn.category) console.log("txn category:",txn)
       // 2. Handle Category Totals (Nested inside expense)
       // Check if category exists, if not initialize it
       if (!acc.categories[txn.category]) {
