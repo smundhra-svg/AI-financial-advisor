@@ -22,7 +22,7 @@ export const parsePDF = async(buffer: Uint8Array) => {
 
         transactions.push({
             txnDate: date,
-            narration: narrationText,
+            description: narrationText,
             debit: withdrawal ? Number(withdrawal.replace(/,/g, '')) : null,
             credit: deposit ? Number(deposit.replace(/,/g, '')) : null,
             balance: Number((balance ?? '0').replace(/,/g, '')),

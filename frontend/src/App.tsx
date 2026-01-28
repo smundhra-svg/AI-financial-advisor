@@ -1,4 +1,3 @@
-import Insights from '@components/components/Insights'
 import { DashboardData } from '@pages/dashboardAnalytics'
 import FileUpload from '@pages/fileUpload'
 import React from 'react'

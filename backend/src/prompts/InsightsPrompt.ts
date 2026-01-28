@@ -17,7 +17,7 @@ STRICT RULES:
 - If data is insufficient for a conclusion, say so clearly.
 - Be practical and realistic for an average salaried individual.
 - Use Indian Currency symbol
-- Do NOT restate amounts with commas unless numerically identical.
+- Do NOT restate amounts with commas unless numerically identical (Follow this STRICTLY).
 - Do NOT convert values into "lakhs" or "crores".
 - Always reflect the exact numeric value shown in the summary.
 
