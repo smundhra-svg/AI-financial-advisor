@@ -1,5 +1,3 @@
-"use client"
-
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
@@ -35,7 +33,6 @@ export function formattedDateToMonth(dateString:string){
     });
     return formatter.format(date);
 }
-
 
 export function CategoryWiseChart({data}: CategoryWiseChartProps) {
     const navigate = useNavigate()

@@ -4,6 +4,7 @@ import cors from "cors"
 import connectDB from './config/db-test.js';
 import uploadRouter from './routes/upload.routes.ts';
 import aiRouter from './routes/ai.route.ts';
+import { connectMongoDB } from './config/mongoodbConfig.ts';
 
 dotenv.config();
 
@@ -19,7 +20,12 @@ app.get('/health',(_,res)=>{
     res.status(200).json({message: 'API is working'});
 });
 
-app.listen(process.env.PORT,()=>{
-    console.log(`Server is running on port ${process.env.PORT}`);
-    // connectDB();
-});
+const startServer = async () => {
+  await connectMongoDB(); // 🔴 THIS WAS MISSING OR NOT AWAITED
+
+  app.listen(3000, () => {
+    console.log(`🚀 Server running on port 3000`);
+  });
+};
+
+startServer();
