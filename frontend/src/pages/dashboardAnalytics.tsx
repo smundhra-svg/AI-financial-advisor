@@ -20,9 +20,11 @@ import { DashBoardData, Summary } from "DTO/dashboard.dto"
 import Insights from "@components/components/Insights"
 import { Loader } from "@components/components/Loader"
 import { Button } from "@components/components/ui/button"
+import { useDashboard } from "@components/components/DashboardContext"
 
 export function DashboardData() {
-    const {data,loading,error} = useDashboardData();
+    // const {data,loading,error} = useDashboardData();
+    const {data,loading,error} = useDashboard();
     const [showInsights,setShowInsights] = React.useState<Boolean>(false);
     const chartData = React.useMemo(() => {
         if (!data?.categories) return []

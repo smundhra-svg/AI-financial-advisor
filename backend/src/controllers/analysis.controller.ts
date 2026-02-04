@@ -69,3 +69,4 @@ export const analyzeTransactions = async (
   res.json({categories,summary, insights});
   
 };
+

@@ -8,8 +8,10 @@ import {
   EmptyTitle,
 } from "@components/components/ui/empty"
 import { Spinner } from "@components/components/ui/spinner"
+import { useNavigate } from "react-router"
 
 export function Loader() {
+  const navigate = useNavigate();
   return (
     <Empty className="bg-accent-foreground w-screen h-screen">
       <EmptyHeader>
@@ -22,7 +24,7 @@ export function Loader() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" onClick={() => navigate(-1)}>
           Cancel
         </Button>
       </EmptyContent>
