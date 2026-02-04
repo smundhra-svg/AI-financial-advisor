@@ -15,9 +15,7 @@ type DashboardContextType = {
   error: string | null;
 };
 
-const DashboardContext = createContext<DashboardContextType | undefined>(
-  undefined
-);
+const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
 
 export const DashboardProvider = ({ children }: { children: ReactNode }) => {
   const [data, setData] = useState<DashBoardData | null>(null);
@@ -27,6 +25,10 @@ export const DashboardProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const loadDashboard = async () => {
       try {
+        if(loading || !data) {
+          setLoading(true);
+          console.warn("Preparing to load dashboard data, hence \"analyze route\" is kept on hold.")
+        }
         const result = await fetchDashboardData();
         setData(result);
       } catch {
@@ -48,9 +50,7 @@ export const DashboardProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-/**
- * Custom hook to consume context safely
- */
+ // Custom hook to consume context safely
 export const useDashboard = () => {
   const context = useContext(DashboardContext);
   if (!context) {
