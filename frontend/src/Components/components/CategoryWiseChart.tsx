@@ -70,6 +70,10 @@ const year = new Date(categories[0].txnDate).getFullYear();
       <CardHeader>
         <CardTitle>Expense by Category</CardTitle>
         <CardDescription>{startingMonth} - {endingMonth}</CardDescription>
+        <button className="bg-white rounded-md w-45 h-10 p-2 text-black hover:bg-gray-400 cursor-pointer hover:w-47 hover:h-12 transition-all"
+        onClick={()=> navigate("/transactions")}>
+          See All Transactions
+        </button>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

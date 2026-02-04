@@ -18,7 +18,7 @@ let transactions: Transaction[] = [];
 
 export const setTransactions = (data: Transaction[]) => {
   transactions = data;
-  console.log(transactions);
+  //console.log(transactions);
 };
 
 export const getTransactions = () => {
