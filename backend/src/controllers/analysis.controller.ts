@@ -57,7 +57,6 @@ export const analyzeTransactions = async (
       records.length - newRecords.length
     }`
   );
-
   //Calculate summary based on categorized transactions
   const summary = calculateSummary(categories);
   console.log("Summary calculated:", summary);

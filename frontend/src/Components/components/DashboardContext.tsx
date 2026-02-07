@@ -13,6 +13,7 @@ type DashboardContextType = {
   setData: React.Dispatch<React.SetStateAction<DashBoardData | null>>;
   loading: boolean;
   error: string | null;
+  loadDashboard: ()=> Promise<void>;
 };
 
 const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
@@ -22,7 +23,7 @@ export const DashboardProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  
     const loadDashboard = async () => {
       try {
         if(loading || !data) {
@@ -38,12 +39,9 @@ export const DashboardProvider = ({ children }: { children: ReactNode }) => {
       }
     };
 
-    loadDashboard();
-  }, []);
-
   return (
     <DashboardContext.Provider
-      value={{ data, setData, loading, error }}
+      value={{ data, setData, loading, error, loadDashboard }}
     >
       {children}
     </DashboardContext.Provider>

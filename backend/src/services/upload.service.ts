@@ -2,6 +2,7 @@ import { trace } from "node:console";
 import { parseCSV } from "./csvParser.service.ts";
 import { parsePDF } from "./pdfParser.service.ts";
 import { setTransactions } from "../store/transactions.store.ts";
+import {v4 as uuidv4} from "uuid";
 
 export const processFile = async (file: Express.Multer.File) => {
     let transactions: any[] = [];
@@ -11,7 +12,9 @@ export const processFile = async (file: Express.Multer.File) => {
         const unit8array = new Uint8Array(file.buffer);
         transactions = await parsePDF(unit8array); 
     }
-    // Later add the transactions to DB
+    
+    //Adding tempId to the transactions for Dart/review system.
+    transactions = transactions.map(txn=> ({...txn, tempId: uuidv4()}));
     setTransactions(transactions)
     return transactions.length;
 }
