@@ -24,7 +24,7 @@ export const analyzeTransactions = async (
     return res.status(400).json({error: "Failed to categorize transactions."});
   }
 
-  // 3️⃣ Persist categorized transactions (IDEMPOTENT)
+  //Persist categorized transactions 
   const userId = "single-user"; // future: from auth
   const records = categories.map((txn)=> {
     const txnHash = generateTxnHash(txn.txnDate, txn.category, txn.amount, txn.type);
@@ -57,7 +57,6 @@ export const analyzeTransactions = async (
       records.length - newRecords.length
     }`
   );
-
   //Calculate summary based on categorized transactions
   const summary = calculateSummary(categories);
   console.log("Summary calculated:", summary);

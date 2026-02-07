@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { axiosClient } from "../api/axiosClient";
 
 const FileUpload = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -60,6 +61,15 @@ const FileUpload = () => {
       setStatus("idle");
     }
   };
+
+    const handleGenerateAnalysis = async () => {
+      try {
+        await axiosClient.get("/analyze"); // explicitly trigger analysis
+        navigate("/dashboard");
+      } catch (err) {
+        alert("Failed to generate analysis. Please try again.");
+      }
+    };
 
   return (
     <div className="min-h-screen bg-foreground text-cyan-500 flex flex-col ">

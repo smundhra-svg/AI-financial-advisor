@@ -24,8 +24,15 @@ import { useDashboard } from "@components/components/DashboardContext"
 
 export function DashboardData() {
     // const {data,loading,error} = useDashboardData();
-    const {data,loading,error} = useDashboard();
+    const {data,loading,error,loadDashboard} = useDashboard();
     const [showInsights,setShowInsights] = React.useState<Boolean>(false);
+
+    React.useEffect(()=>{
+            if(!data){
+                loadDashboard();
+        }
+    },[]);
+
     const chartData = React.useMemo(() => {
         if (!data?.categories) return []
 
