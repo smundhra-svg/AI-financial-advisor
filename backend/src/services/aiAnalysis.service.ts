@@ -52,9 +52,11 @@ export const generateAITransactions = async (transactions: Transaction[]): Promi
                 
                 return { 
                     txnDate: tx.txnDate,
+                    description: tx.description,
                     category: categories[index] || "Others",
                     amount: tx.credit || tx.debit,
-                    type: (tx.credit && tx.credit > 0) ? 'income' : 'expense' 
+                    type: (tx.credit && tx.credit > 0) ? 'income' : 'expense',
+                    tempId: tx.tempId,
                 } satisfies ProcessedTransaction;
             });
             return processedTransaction;

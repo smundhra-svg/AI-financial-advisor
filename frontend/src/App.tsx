@@ -1,6 +1,7 @@
-import { DashboardProvider } from '@components/components/DashboardContext'
+import EditedTxns from '@components/components/EditedTxns'
+import { DashboardProvider } from '@hooks/DashboardContext'
 import { DashboardData } from '@pages/dashboardAnalytics'
-import DisplayTxn from '@pages/displayTxn'
+import EditPage from '@pages/EditPage'
 import FileUpload from '@pages/fileUpload'
 import React from 'react'
 import { BrowserRouter,data,Route, Routes } from 'react-router'
@@ -13,8 +14,10 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<FileUpload/>} />
-          <Route path='/dashboard' element={<DashboardData />} />
-          <Route path='/transactions' element={<DisplayTxn/>} />
+          {/* <Route path='/dashboard' element={<DashboardData />} /> */}
+          {/* <Route path='/transactions' element={<DisplayTxn/>} /> */}
+          <Route path="/transactions" element={<EditPage />} />
+          
         </Routes>
       </BrowserRouter>
     </DashboardProvider>

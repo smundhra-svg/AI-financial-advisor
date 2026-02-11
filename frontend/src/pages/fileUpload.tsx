@@ -65,7 +65,7 @@ const FileUpload = () => {
     const handleGenerateAnalysis = async () => {
       try {
         await axiosClient.get("/analyze"); // explicitly trigger analysis
-        navigate("/dashboard");
+        navigate("/transactions");
       } catch (err) {
         alert("Failed to generate analysis. Please try again.");
       }
@@ -151,7 +151,7 @@ const FileUpload = () => {
               </p>
 
               <button
-              onClick={()=> navigate('/dashboard')}
+              onClick={()=> navigate('/transactions')}
                 className="w-full bg-cyanBlue text-black py-2 rounded font-semibold hover:bg-sky-400 transition"
               >
                 Generate Analysis

@@ -5,12 +5,12 @@ import React, {
   useState,
   ReactNode,
 } from "react";
-import { DashBoardData } from "DTO/dashboard.dto";
+import { CategoriesTransactions, DashBoardData } from "DTO/dashboard.dto";
 import { fetchDashboardData } from "@service/dashboard.service";
 
 type DashboardContextType = {
-  data: DashBoardData | null;
-  setData: React.Dispatch<React.SetStateAction<DashBoardData | null>>;
+  data: CategoriesTransactions | null;
+  setData: React.Dispatch<React.SetStateAction<CategoriesTransactions | null>>;
   loading: boolean;
   error: string | null;
   loadDashboard: ()=> Promise<void>;
@@ -19,9 +19,10 @@ type DashboardContextType = {
 const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
 
 export const DashboardProvider = ({ children }: { children: ReactNode }) => {
-  const [data, setData] = useState<DashBoardData | null>(null);
+  const [data, setData] = useState<CategoriesTransactions | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
 
   
     const loadDashboard = async () => {
