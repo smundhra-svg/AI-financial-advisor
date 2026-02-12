@@ -20,7 +20,7 @@ import { DashBoardData, Summary } from "DTO/dashboard.dto"
 import Insights from "@components/components/Insights"
 import { Loader } from "@components/components/Loader"
 import { Button } from "@components/components/ui/button"
-import { useDashboard } from "@components/components/DashboardContext"
+import { useDashboard } from "@hooks/DashboardContext"
 
 export function DashboardData() {
     // const {data,loading,error} = useDashboardData();

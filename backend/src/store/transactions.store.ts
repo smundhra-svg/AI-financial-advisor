@@ -4,14 +4,17 @@ export interface Transaction{
   debit: number | null,
   credit: number | null,
   balance: number,
-  source: string
+  source: string,
+  tempId: string,
 }
 
 export interface ProcessedTransaction{
   txnDate: string,
+  description: string,
   category: string,
   amount: number,
-  type: 'income' | 'expense'
+  type: 'income' | 'expense',
+  tempId: string, // Temporary ID for review system
 }
 
 let transactions: Transaction[] = [];
