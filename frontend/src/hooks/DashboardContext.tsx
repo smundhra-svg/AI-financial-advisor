@@ -9,8 +9,8 @@ import { CategoriesTransactions, DashBoardData } from "DTO/dashboard.dto";
 import { fetchDashboardData } from "@service/dashboard.service";
 
 type DashboardContextType = {
-  data: CategoriesTransactions | null;
-  setData: React.Dispatch<React.SetStateAction<CategoriesTransactions | null>>;
+  data: DashBoardData | null;
+  setData: React.Dispatch<React.SetStateAction<DashBoardData | null>>;
   loading: boolean;
   error: string | null;
   loadDashboard: ()=> Promise<void>;
@@ -19,7 +19,7 @@ type DashboardContextType = {
 const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
 
 export const DashboardProvider = ({ children }: { children: ReactNode }) => {
-  const [data, setData] = useState<CategoriesTransactions | null>(null);
+  const [data, setData] = useState<DashBoardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   

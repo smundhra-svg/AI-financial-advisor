@@ -37,7 +37,7 @@ export function DashboardData() {
 
             const map = new Map<string,{ date: string; income: number; expense: number }>()
 
-                for (const txn of data.categories) {
+                for (const txn of data.data) {
                     const date = txn.txnDate
 
                     if (!map.has(date)) {

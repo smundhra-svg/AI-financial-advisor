@@ -46,7 +46,9 @@ export const saveTransctions = async (req: Request,res:Response)=> {
       records.length - newRecords.length
     }`  
     );
-
+    //Delete the redis draft data (NOTE: We can use this redis data for versioning or for backtracking (reverting changes))
+    await redisClient.del(REDIS_REVIEW_KEY);
+    console.log("Redis data deleted successfully for : ",REDIS_REVIEW_KEY);
     //Now that our data has been stored inside our database we will be generating the charts and summaries and insights 
     res.json({message:"Data Stored inside Database Successfully",newRecords});
 }
