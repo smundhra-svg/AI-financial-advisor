@@ -1,7 +1,8 @@
 import crypto from 'crypto';
 
 export const generateTxnHash = (
-    txnDate: string,
+    txnDate: Date,
+    description: string,
     category: string,
     amount: number,
     type: string

@@ -53,16 +53,16 @@ const EditPage = () => {
       setEditedTransactions(prev => {
         // 1. If new category reverted back to original category,remove it from editedTrasactions (if exists)
         const alreadyEdited = prev.find(e => e.tempId === tempId);
-        if(newCategory === originalCategory){
+        if(category === originalCategory){
           return prev.filter(e => e.tempId !== tempId);
         }
         // 2. If already edited, update it! 
         if(alreadyEdited){
-          return prev.map(e => e.tempId === tempId ? {...e, newCategory} : e);
+          return prev.map(e => e.tempId === tempId ? {...e, category} : e);
         }
 
         //3. If not edited before, add it ! 
-        return [...prev,{tempId, category: newCategory}];
+        return [...prev,{tempId, category: category}];
       });
      
   };
@@ -90,7 +90,7 @@ const EditPage = () => {
       await axiosClient.patch("/review", {
         updates: editedTransactions,
       });
-
+      await axiosClient.post("/save");
       // After successful patch
       setOriginalTxns(data?.transactions || []);
       setEditedTransactions([]);
@@ -105,16 +105,30 @@ const EditPage = () => {
   const handleUndoAll = () => {
     if(!data) return;
     setEditedTransactions([]);
-    // setData(prev => {
-    //   if(!prev) return prev;
-    //   return {
-    //     ...prev,
-    //     transactions: prev.transactions.map(txn => {
-    //       const original = originalTxns.find(ot => ot.tempId === txn.tempId);
-    //       return original ? {...txn, category: original.category} : txn;
-    //     }),
-    //   };
-    // }); 
+    //when clicked, it should revert all the changes in the UI to the original category, but not update the original transactions until the user clicks on confirm.
+    setData(prev => {
+      if(!prev) return prev;
+      return {
+        ...prev,
+        transactions: prev.transactions.map(txn => {
+          const originalTxn = originalTxns.find(t => t.tempId === txn.tempId);
+          if(!originalTxn) return txn;
+          return {
+            ...txn,
+            category: originalTxn.category,
+          };
+        }),
+      };
+    });
+  };
+
+  const handleClickForWithoutEditing = async() => {
+    try {
+      await axiosClient.post("/save");
+      navigate("/generate");
+    } catch (error) {
+      console.log("Error in sending data directly to the Database", error);
+    }
   }
 
   useEffect(()=> {
@@ -160,6 +174,10 @@ const EditPage = () => {
         <h2 className="text-sm text-gray-400">
           Edit categories before confirming. The "Edited transactions" once saved, cannot be changed later.
         </h2>
+        <Button variant='link' className='text-center w-full h-auto text-cyan-300 text-md font-light'
+          onClick={handleClickForWithoutEditing}>
+          Generate Analysis Without Editing
+        </Button>
         {editedTransactions.length > 0 && (
           <div className="mt-6 text-xs text-green-400">
             Edited Count: {editedTransactions.length}
@@ -247,18 +265,18 @@ const EditPage = () => {
                     : [...prev, categoryName].sort()
                 );
 
-                setData(prev => {
-                  if (!prev) return prev;
-                  return {
-                    ...prev,
-                    transactions: prev.transactions.map(txn =>
-                      txn.tempId === categoryTxnId
-                        ? { ...txn, category: categoryName }
-                        : txn
-                    ),
-                  };
-                });
-
+                // setData(prev => {
+                //   if (!prev) return prev;
+                //   return {
+                //     ...prev,
+                //     transactions: prev.transactions.map(txn =>
+                //       txn.tempId === categoryTxnId
+                //         ? { ...txn, category: categoryName }
+                //         : txn
+                //     ),
+                //   };
+                // });
+                handleCategoryChange(categoryTxnId, categoryName);
                 setSelectedCategory(categoryName);
                 setCategoryTxnId(null);
                 setNewCategory("");

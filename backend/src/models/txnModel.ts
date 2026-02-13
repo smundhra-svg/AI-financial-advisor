@@ -1,4 +1,5 @@
 import {Schema,model} from "mongoose";
+import { RecordsDatabase } from "../DTO/dtos.ts";
 
 const txnSchema = new Schema({
     userId: {
@@ -15,6 +16,9 @@ const txnSchema = new Schema({
         type: Date,
         required: true,
     },
+    description: {
+      type: String,
+    },
     category: {
       type: String,
       required: true,
@@ -28,6 +32,10 @@ const txnSchema = new Schema({
     type: {
       type: String,
       enum: ["income", "expense"],
+      required: true,
+    },
+    tempId:{
+      type: String,
       required: true,
     },
   },

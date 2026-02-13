@@ -14,6 +14,7 @@ export const updatedTransactions = async (req : Request, res: Response) => {
             if(!data){
                 return res.status(404).json({error: "No transactions found in redis store for the user key", REDIS_REVIEW_KEY});
             }
+
             const draft = JSON.parse(data.toString());
             for(const update of updates){
                 const txn = draft.transactions.find((t:any)=> t.tempId === update.tempId);
@@ -21,7 +22,9 @@ export const updatedTransactions = async (req : Request, res: Response) => {
                     txn.category = update.category;
                 }
             }
-            await redisClient.set(REDIS_REVIEW_KEY,JSON.stringify(draft),{EX: 60*60*24});
+            draft.status = "EDITED";
+            const response = await redisClient.set(REDIS_REVIEW_KEY,JSON.stringify(draft),{EX: 60*60*24});
+            console.log("Response after editing the data,",response)
             return res.json({message: "Draft Updated Successfully"});
     } catch (error) {
         console.log("Error in updating the transactions");

@@ -47,46 +47,4 @@ export const analyzeTransactions = async (
 };
 
 export default REDIS_REVIEW_KEY;
-//Persist categorized transactions 
-  //const userId = "single-user"; // future: from auth
-  // const records = categories.map((txn)=> {
-  //   const txnHash = generateTxnHash(txn.txnDate, txn.category, txn.amount, txn.type);
-  //   return {
-  //     userId,
-  //     txnHash,
-  //     txnDate: new Date(txn.txnDate),
-  //     category: txn.category,
-  //     amount: txn.amount,
-  //     type: txn.type,
-  //   };
-  // });
-  // console.log("Prepared DB records:", records);
-  // const hashes = records.map((rec)=> rec.txnHash);
-  // const exisitingHashes = await txnRepo.findExistingHashes(userId, hashes);
 
-  // const newRecords = records.filter((rec)=> !exisitingHashes.has(rec.txnHash));
-  // if(newRecords.length > 0){
-  //   try{
-  //      console.log("New records to insert:", newRecords.length);
-  //      await txnRepo.insertManyTxns(newRecords);
-  //     console.log("New transactions inserted successfully");
-  //   }catch(err){
-  //     console.error("Error inserting new transactions:", err);
-  //   }
-  // }
-
-  // console.log(
-  //   `DB Ingestion → inserted: ${newRecords.length}, skipped: ${
-  //     records.length - newRecords.length
-  //   }`
-  // );
-
-  //Calculate summary based on categorized transactions
-  // const summary = calculateSummary(categories);
-  // console.log("Summary calculated:", summary);
-
-  // // Generate AI insights based on the summary
-  // console.log("Generating AI insights...");
-  // const insights = await generateAIInsights(summary);
-  // console.log("AI Insights Generated:", insights);
-  // res.json({categories,summary, insights});

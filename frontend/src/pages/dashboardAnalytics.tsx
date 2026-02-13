@@ -14,7 +14,6 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@components/components/ui/chart"
-import { useDashboardData } from "@hooks/useDashboardData"
 import { CategoryWiseChart } from "@components/components/CategoryWiseChart"
 import { DashBoardData, Summary } from "DTO/dashboard.dto"
 import Insights from "@components/components/Insights"
@@ -34,7 +33,7 @@ export function DashboardData() {
     },[]);
 
     const chartData = React.useMemo(() => {
-        if (!data?.categories) return []
+        if (!data?.data) return []
 
             const map = new Map<string,{ date: string; income: number; expense: number }>()
 

@@ -72,9 +72,12 @@ const FileUpload = () => {
     };
 
   return (
-    <div className="min-h-screen bg-foreground text-cyan-500 flex flex-col ">
+    <div className="min-h-screen bg-primary text-cyan-500 flex flex-col ">
       {/* Header */}
-      
+      {/* Background gradient effects */}
+    <div className="absolute inset-0 gradient-radial pointer-events-none" />
+    <div className="absolute top-0 left-1/2 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 right-1/1.2 w-96 h-96 bg-cyan-300/5 rounded-full blur-3xl" />
       <header className="px-8 py-6 border-b border-sidebar-border flex flex-col items-center">
         <h1 className="text-2xl font-semibold">
           AI Bank Statement Analyzer

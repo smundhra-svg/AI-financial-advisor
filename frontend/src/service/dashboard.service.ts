@@ -4,7 +4,7 @@ import { CategoriesTransactions, DashBoardData } from "DTO/dashboard.dto";
 
 export const fetchDashboardData = async(): Promise<CategoriesTransactions> => {
     try {
-        const response = await axiosClient.get<CategoriesTransactions>("/analyze");
+        const response = await axiosClient.get<CategoriesTransactions>("/generate");
         console.log(response.data);
         return response.data;
     } catch (error) {
@@ -12,3 +12,5 @@ export const fetchDashboardData = async(): Promise<CategoriesTransactions> => {
         throw error;
     }  
 };
+
+
