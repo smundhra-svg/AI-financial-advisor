@@ -47,7 +47,7 @@ export const generateAITransactions = async (transactions: Transaction[]): Promi
             const processedTransaction = transactions.map((tx, index) => {
                 
                 return { 
-                    txnDate: new Date(tx.txnDate),
+                    txnDate:tx.txnDate,
                     description: tx.description,
                     category: categories[index] || "Others",
                     amount: tx.credit || tx.debit,

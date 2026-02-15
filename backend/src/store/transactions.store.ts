@@ -12,7 +12,7 @@ export interface ProcessedTransaction{
   userId?: string;
     type: "income" | "expense";
     txnHash?: string;
-    txnDate: Date;
+    txnDate: string;
     category: string;
     amount: number;
     tempId: string;

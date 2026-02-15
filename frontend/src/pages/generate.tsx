@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Shield, TrendingUp,Zap } from 'lucide-react';
+import { ArrowRight, Shield, Star, TrendingUp,Zap } from 'lucide-react';
 import { Button } from '@components/components/ui/button';
 import { useNavigate } from 'react-router';
 
@@ -19,15 +19,17 @@ const Generate = () => {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold">
-            <span className="text-white">Smart </span>
-            <span className="text-gradient text-cyan-300">Statement Analyzer</span>
+            <span className="text-white">Your Dashboard</span>
+            <div className="text-gradient text-gray-300 mt-2">is</div>
+            <span className="text-gradient text-cyan-300">Ready!</span>
           </h1>
         </header>
         <div className='w-full h-auto mx-auto flex flex-wrap justify-center items-center'>
         <Button className='w-98 h-12 text-base font-semibold bg-cyan-600 hover:bg-cyan-300/90 text-black neon-glow hover:neon-glow transition-all duration-300 disabled:opacity-50 disabled:neon-glow-subtle-none
         '
         onClick={()=> navigate("/dashboard")}>
-            Generate Analysis <ArrowRight className='text-black h-auto w-10'/> 
+          <Star className='hover:scale-105 transition-all'/> 
+            Generate Dashboard <ArrowRight className='text-black h-auto w-10'/> 
         </Button>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
