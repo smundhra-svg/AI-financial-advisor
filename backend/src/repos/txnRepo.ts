@@ -1,3 +1,4 @@
+import { RecordsDatabase } from "../DTO/dtos.ts";
 import { txnModel } from "../models/txnModel.ts";
 
 export class txnRepo {
@@ -11,15 +12,16 @@ export class txnRepo {
         return new Set(docs.map(doc => doc.txnHash));
     }
 
-    static async insertManyTxns(records: any[]){
+    static async insertManyTxns(records: RecordsDatabase[]){
         if(records.length === 0) return [];
         return await txnModel.insertMany(records,{ordered: false});
     }
 
-    static async getAllForUser(userId: string) {
+    // Fetches all transactions belonging to a specific user and returns only selected fields in plain JavaScript object format.
+    static async getAllForUser(userId: string){
     return txnModel.find(
       { userId },
-      { _id: 0, txnDate: 1, category: 1, amount: 1, type: 1 }
+      { _id: 0,txnDate: 1,category: 1, amount: 1, type: 1}
     ).lean();
   }
 }

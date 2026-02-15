@@ -20,7 +20,7 @@ export interface Summary{
 }
 
 export interface DashBoardData{
-    categories: CategoriesTransactions[],
+    data: CategoriesTransactions[],
     summary: Summary,
     insights: string
 }

@@ -1,3 +1,4 @@
+import { RecordsDatabase } from "../DTO/dtos.ts"
 import { extractDescription } from "../services/extractDescription.ts"
 
 export const getCategories = (transactions: any[])=> {

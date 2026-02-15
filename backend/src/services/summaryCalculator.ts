@@ -1,23 +1,3 @@
-// export const calculateSummary = (transactions: any[])=> {
-//     let totalIncome = 0
-//     let totalExpense = 0 
-//     for(const txn of transactions){
-//         if(txn.amount > 0 && txn.type === "expense"){
-//             totalExpense += txn.amount;
-//         }
-//         if(txn.amount > 0 && txn.type === "income"){
-//             totalIncome += txn.amount;
-//         }
-//     }
-//     console.log(`Total Income: ${totalIncome}, Total Expense: ${totalExpense}`);
-//     console.log(`Net Savings: ${totalIncome - totalExpense}`);
-//     return{
-//         totalIncome,
-//         totalExpense,
-//         netSavings: totalIncome - totalExpense
-//     };
-// };
-
 import { ProcessedTransaction } from "../store/transactions.store.ts";
 
 export const calculateSummary = (transactions: ProcessedTransaction[]) => {

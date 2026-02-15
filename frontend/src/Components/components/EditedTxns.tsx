@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from './ui/button';
+import { AlertModal } from './alertModal';
 
 interface EditedTxnItem {
     tempId: string;
@@ -17,6 +18,7 @@ interface EditedTxnsProps {
 }
 
 const EditedTxns = ({editedTxnPreview, handleBulkConfirm, handleUndoAll}: EditedTxnsProps) => {
+
   return (
     <>
         <div className='w-full h-auto items-center-safe'>
@@ -51,15 +53,10 @@ const EditedTxns = ({editedTxnPreview, handleBulkConfirm, handleUndoAll}: Edited
             </table>
 
             <div className="flex justify-center mt-6 gap-3">
-            <Button
-                onClick={handleBulkConfirm}
-                className="bg-green-600 hover:bg-green-700 hover:scale-105 transition-transform px-6"
-            >
-                Confirm {editedTxnPreview.length} Changes
-            </Button>
-            <Button variant={'destructive'}
+            <AlertModal handleBulkConfirm={handleBulkConfirm}/> 
+            <Button variant='destructive'
             onClick={handleUndoAll}
-            className='cursor-pointer'>
+            className="hover:scale-105 transition-transform cursor-pointer">
               Undo All
             </Button>
             </div>

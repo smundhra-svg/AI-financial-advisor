@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { axiosClient } from "../api/axiosClient";
+import { Shield, TrendingUp ,Zap } from "lucide-react";
 
 const FileUpload = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -72,20 +73,31 @@ const FileUpload = () => {
     };
 
   return (
-    <div className="min-h-screen bg-foreground text-cyan-500 flex flex-col ">
+    
+    <div className="min-h-screen bg-primary text-cyan-500 flex flex-col justify-center items-center">
       {/* Header */}
-      
-      <header className="px-8 py-6 border-b border-sidebar-border flex flex-col items-center">
-        <h1 className="text-2xl font-semibold">
-          AI Bank Statement Analyzer
-        </h1>
-        <p className="text-sm text-gray-400">
-          Upload CSV bank statements for automated insights
-        </p>
-      </header>
+      {/* Background gradient effects */}
+    <div className="absolute inset-0 gradient-radial pointer-events-none" />
+    <div className="absolute top-0 left-1/5 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 right-1/6 w-96 h-96 bg-cyan-300/5 rounded-full blur-3xl" />
+
+       <div className="relative z-10 w-full px-4 py-16 max-w-2xl mx-auto space-y-10 mb-10">
+        <header className="text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-cyan-300">
+            <Zap className="w-4 h-4 text-cyan-400 text-glow-success" />
+            <span className="text-sm font-medium text-cyan-400">AI-Powered Analysis</span>
+          </div>
+
+          <h1 className="text-4xl md:text-5xl font-bold">
+            <span className="text-white">Smart </span>
+            <span className="text-gradient text-cyan-300">Statement Analyzer</span>
+          </h1>
+        </header>
+        </div>
     
       {/* Main */}
-      <main className="flex-1 flex items-center justify-center px-6">
+      <main className="flex items-center justify-center px-6 ">
+        <div>
         <div className="w-full max-w-xl bg-gunmetalLight rounded-xl p-6 shadow-lg border border-cyan-200">
           {/* File Input */}
           <label className="block mb-4 text-sm font-medium">
@@ -152,12 +164,24 @@ const FileUpload = () => {
 
               <button
               onClick={()=> navigate('/transactions')}
-                className="w-full bg-cyanBlue text-black py-2 rounded font-semibold hover:bg-sky-400 transition"
+                className="w-full bg-cyan-800 text-black py-2 rounded font-semibold hover:bg-cyan-300 transition"
               >
-                Generate Analysis
+                Launch Editing
               </button>
             </div>
           )}
+
+        </div>
+        <div className="flex flex-wrap justify-center gap-4 mt-10">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 border border-border">
+            <Shield className="w-4 h-4 text-green-600  text-glow-success" />
+            <span className="text-sm text-white">Bank-level Security</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800  border border-border">
+            <TrendingUp className="w-4 h-4 text-cyan-300"/>
+            <span className="text-sm text-white">Spending Insights</span>
+          </div>
+        </div>
         </div>
       </main>
     </div>

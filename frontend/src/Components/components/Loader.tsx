@@ -13,7 +13,7 @@ import { useNavigate } from "react-router"
 export function Loader() {
   const navigate = useNavigate();
   return (
-    <Empty className="bg-accent-foreground w-screen h-screen">
+    <Empty className="bg-primary w-screen h-screen">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <Spinner />

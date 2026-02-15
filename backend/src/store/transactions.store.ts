@@ -9,12 +9,14 @@ export interface Transaction{
 }
 
 export interface ProcessedTransaction{
-  txnDate: string,
-  description: string,
-  category: string,
-  amount: number,
-  type: 'income' | 'expense',
-  tempId: string, // Temporary ID for review system
+  userId?: string;
+    type: "income" | "expense";
+    txnHash?: string;
+    txnDate: Date;
+    category: string;
+    amount: number;
+    tempId: string;
+    description?: string;
 }
 
 let transactions: Transaction[] = [];

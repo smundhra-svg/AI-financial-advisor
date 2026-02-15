@@ -36,7 +36,8 @@ export function formattedDateToMonth(dateString:string){
 
 export function CategoryWiseChart({data}: CategoryWiseChartProps) {
     const navigate = useNavigate()
-  const { categories, summary } = data
+  const { data:categories, summary } = data
+  if(!categories.length) return null;
   const chartData = Object.entries(summary.categories as Record<string, number>).map(
     ([category, amount]) => ({
       category,
@@ -70,10 +71,10 @@ const year = new Date(categories[0].txnDate).getFullYear();
       <CardHeader>
         <CardTitle>Expense by Category</CardTitle>
         <CardDescription>{startingMonth} - {endingMonth}</CardDescription>
-        <button className="bg-white rounded-md w-45 h-10 p-2 text-black hover:bg-gray-400 cursor-pointer hover:w-47 hover:h-12 transition-all"
+        {/* <button className="bg-white rounded-md w-45 h-10 p-2 text-black hover:bg-gray-400 cursor-pointer hover:w-47 hover:h-12 transition-all"
         onClick={()=> navigate("/transactions")}>
           See All Transactions
-        </button>
+        </button> */}
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -88,7 +89,7 @@ const year = new Date(categories[0].txnDate).getFullYear();
             <YAxis
               dataKey="category"
               type="category"
-              className="text-l"
+              className="text-md font-light"
               tickLine={false}
               tickMargin={10}
               axisLine={false}

@@ -4,7 +4,6 @@
 @custom-variant dark (&:is(.dark *));
 
 
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -113,6 +112,7 @@
   --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+  
 }
 
 @layer base {
@@ -121,5 +121,27 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components{
+  .neon-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--glow-primary) / 0.3),
+      0 0 40px hsl(var(--glow-primary) / 0.2),
+      0 0 60px hsl(var(--glow-primary) / 0.1);
+  }
+
+  .neon-glow-subtle {
+    box-shadow: 
+      0 0 10px hsl(var(--glow-primary) / 0.2),
+      0 0 20px hsl(var(--glow-primary) / 0.1);
+  }
+
+  .neon-border {
+    border: 1px solid hsl(var(--primary) / 0.5);
+    box-shadow: 
+      inset 0 0 20px hsl(var(--glow-primary) / 0.1),
+      0 0 20px hsl(var(--glow-primary) / 0.15);
   }
 }
