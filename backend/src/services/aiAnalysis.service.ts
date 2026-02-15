@@ -37,10 +37,6 @@ export const generateAITransactions = async (transactions: Transaction[]): Promi
             keep_alive: "1h",
         })
         
-            // const rawContent = response.message.content;
-            // const cleanJsondata = cleanJson(rawContent);
-            // //console.log("Clean JSON data:", cleanJsondata);
-            // return cleanJsondata;
             const {categories}: {categories: string[]} = JSON.parse(response.message.content);
             
             // Validation
